@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>My Kisah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>My Kisah</h1>
+
+    <input type="date" id="dateInput">
+    <textarea id="diaryInput" placeholder="Tulis kisahmu..."></textarea>
+    <input type="file" id="imageInput" accept="image/*">
+
+    <button onclick="addEntry()">Simpan</button>
+</div>
+
+<div id="kisahList"></div>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <p id="modalText"></p>
+        <div class="modal-buttons">
+            <button onclick="confirmAction()">Ya</button>
+            <button onclick="closeModal()">Batal</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
