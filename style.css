@@ -1,42 +1,60 @@
+:root {
+    --primary: #6c63ff;
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --text: #333;
+}
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial;
-    background: #f0f2f5;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
     margin: 0;
+    color: var(--text)
 }
 
 .container {
     width: 90%;
     max-width: 600px;
-    margin: 30px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
+    margin: 40px auto;
+    background: var(--card);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-textarea {
+input, textarea {
     width: 100%;
-    height: 100px;
+    padding: 12px;
     margin-top: 10px;
-    padding: 10px;
-    resize: none;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary);
 }
 
 button {
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 15px;
+    padding: 12px;
     width: 100%;
     border: none;
-    border-radius: 8px;
-    background: #e0e0e0;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 button:hover {
-    background: #d5d5d5;
+    opacity: 0.9;
 }
 
 #kisahList {
@@ -52,30 +70,29 @@ button:hover {
     align-items: start;
 }
 
-/* CARD */
 .entry {
-    background: white;
+    background: var(--card);
     padding: 15px;
-    border-radius: 12px;
-    border: 1px solid #ddd;
+    border-radius: 16px;
+    border: none;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     transition: 0.2s;
 }
 
 .entry:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
 }
 
 .entry small {
     color: gray;
 }
 
-/* GAMBAR */
 .entry img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-top: 10px;
-    display: block;
 }
 
 .modal {
@@ -107,4 +124,9 @@ button:hover {
 .modal button {
     width: auto;
     padding: 8px 15px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary);
 }

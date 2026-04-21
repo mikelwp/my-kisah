@@ -19,7 +19,7 @@ function confirmAction() {
 
 function addEntry() {
     const date = document.getElementById("dateInput").value;
-    const text = document.getElementById("diaryInput").value;
+    const text = document.getElementById("kisahInput").value;
     const imageInput = document.getElementById("imageInput").files[0];
 
     if (!date || !text) return;
@@ -43,7 +43,7 @@ function saveEntry(date, text, image) {
 
     displayEntries();
 
-    document.getElementById("diaryInput").value = "";
+    document.getElementById("kisahInput").value = "";
     document.getElementById("imageInput").value = "";
 }
 
@@ -61,7 +61,7 @@ function deleteEntry(index) {
 }
 
 function displayEntries() {
-    const container = document.getElementById("diaryList");
+    const container = document.getElementById("kisahList");
     container.innerHTML = "";
 
     kisahData.forEach((item, index) => {
