@@ -1,5 +1,6 @@
 let kisahData = JSON.parse(localStorage.getItem("kisah")) || [];
 let currentAction = null;
+let editIndex = -1;
 
 function showModal(message, action) {
     document.getElementById("modalText").innerText = message;
@@ -38,13 +39,36 @@ function addEntry() {
 }
 
 function saveEntry(date, text, image) {
-    kisahData.push({ date, text, image });
-    localStorage.setItem("kisah", JSON.stringify(kisahData));
+    if (editIndex === -1) {
+        kisahData.push({ date, text, image });
+    } else {
+        kisahData[editIndex] = {
+            date,
+            text,
+            image: image || kisahData[editIndex].image
+        };
 
+        editIndex = -1;
+    }
+
+    localStorage.setItem("kisah", JSON.stringify(kisahData));
     displayEntries();
 
     document.getElementById("kisahInput").value = "";
     document.getElementById("imageInput").value = "";
+    document.getElementById("dateInput").value = "";
+}
+
+function startEdit(index) {
+    const data = kisahData[index];
+
+    document.getElementById("dateInput").value = data.date;
+    document.getElementById("kisahInput").value = data.text;
+
+    editIndex = index;
+
+    // scroll ke atas biar UX enak
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function deleteEntry(index) {
@@ -72,6 +96,7 @@ function displayEntries() {
             <small>${item.date}</small>
             <p>${item.text}</p>
             ${item.image ? `<img src="${item.image}">` : ""}
+            <button onclick="startEdit(${index})">Edit</button>
             <button onclick="deleteEntry(${index})">Hapus</button>
         `;
 
