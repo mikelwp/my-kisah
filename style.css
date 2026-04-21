@@ -16,22 +16,31 @@ body {
     color: var(--text)
 }
 
+body.dark {
+    --bg: #121212;
+    --card: #1e1e1e;
+    --text: #f1f1f1;
+}
+
 .container {
     width: 90%;
     max-width: 600px;
     margin: 40px auto;
     background: var(--card);
+    color: var(--text);
     padding: 25px;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 input, textarea {
+    background: var(--card);
+    color: var(--text);
     width: 100%;
     padding: 12px;
     margin-top: 10px;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     outline: none;
     transition: 0.2s;
 }
@@ -75,7 +84,7 @@ button:hover {
     padding: 15px;
     border-radius: 16px;
     border: none;
-
+    color: var(--text);
     box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     transition: 0.2s;
 }
@@ -107,7 +116,8 @@ button:hover {
 }
 
 .modal-content {
-    background: white;
+    background: var(--card);
+    color: var(--text);
     padding: 20px;
     margin: 15% auto;
     width: 300px;
@@ -124,6 +134,53 @@ button:hover {
 .modal button {
     width: auto;
     padding: 8px 15px;
+}
+
+.switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: #ccc;
+    border-radius: 34px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.3s;
+}
+
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+input:checked + .slider {
+    background-color: var(--primary);
+}
+
+input:checked + .slider::before {
+    transform: translateX(24px);
 }
 
 h1 {
